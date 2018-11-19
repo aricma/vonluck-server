@@ -86,6 +86,7 @@ app.get('/send-email', (req, res, next) => {
     })
     .catch((err) => {
       console.log(err);
+      res.status = 400
       res.send('Transporter Verification Error');
     })
 
