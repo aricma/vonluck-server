@@ -35,8 +35,25 @@ app.all('/', function(req, res, next) {
   next();
  });
 
+// MIDDLEWARE
+const transporterMiddleware = (req, res, next, middleware = false) => {
+  return new Promise((resolve, reject) => {
+    transporter.verify()
+    .then(() => {
+      const serverMessage = 'vonLuck Server is ready'
+      console.log(serverMessage)
+      return middleware ? resolve(res.status(200).send(serverMessage)) : resolve(true)
+    })
+    .catch((err) => {
+      console.log(err);
+      return middleware ? reject(res.status(400).send('Transporter Verification Error')) : reject(err)
+    })
+  })
+}
+
+
 // ROUTES
-app.get('/', (req, res) => res.send('Willkommen auf dem vonLuck Server'))
+app.get('/', transporterMiddleware(req, res, next))
 
 app.post('/send-email', (req, res, next) => {
   const bodyStructure = [
@@ -57,48 +74,40 @@ app.post('/send-email', (req, res, next) => {
       type: 'string',
     },
   ]
-  checkObejctForStructure(req.body, bodyStructure)
+  Promise.all([
+    checkObejctForStructure(req.body, bodyStructure),
+    transporterMiddleware(req, res, next, true),
+  ])
   .then(() => {
     const {body: {from, to = 'info@von-luck.de', name, subject = 'No Subject', text = 'No Text'}} = req
-
-    transporter.verify()
-    .then((responseTransporterVerification) => {
-      console.log('Server is ready to take our messages');
-
-      const html = `
-        <h1>Feedback von ${name}</h1>
-        <p>E-Mail: ${from}
-        <p>Subject: ${subject}</p>
-        <p>Message: ${text}</p>
-      `
-      var message = {
-        from: '"vonLuck Server" <server@von-luck.de>',
-        to: 'info@von-luck.de',
-        subject: 'Feedback: ' + subject + ' by ' + name,
-        // text: 'Just some Feedback from the costumer',
-        html,
-      };
-
-      transporter.sendMail(message)
-        .then(() => {
-          const succsessMessage = 'email was send'
-          console.log(succsessMessage);
-          res.send(succsessMessage)
-        })
-        .catch((err) => {
-          console.error(err);
-          res.status(500).send('Send Mail caused Server Error. Please reach out to adrian@von-luck.de.')
-        })
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(400).send('Transporter Verification Error');
-    })
-
+    console.log('Server is ready to take our messages')
+    const html = `
+      <h1>Feedback von ${name}</h1>
+      <p>E-Mail: ${from}
+      <p>Subject: ${subject}</p>
+      <p>Message: ${text}</p>
+    `
+    var message = {
+      from: '"vonLuck Server" <server@von-luck.de>',
+      to: 'info@von-luck.de',
+      subject: 'Feedback: ' + subject + ' by ' + name,
+      // text: 'Just some Feedback from the costumer',
+      html,
+    };
+    transporter.sendMail(message)
+      .then(() => {
+        const succsessMessage = 'email was send'
+        console.log(succsessMessage);
+        res.send(succsessMessage)
+      })
+      .catch((err) => {
+        console.error(err);
+        res.status(500).send('Send Mail caused Server Error. Please reach out to adrian@von-luck.de.')
+      })
   })
   .catch((err) => {
-    console.error(err)
-    res.status(400).send('Bad Request');
+    console.log(err);
+    res.status(400).send('Bad Request Transporter to E-Mail-Server Verification Error')
   })
 })
 
