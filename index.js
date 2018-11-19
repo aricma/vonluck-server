@@ -80,28 +80,24 @@ app.get('/send-email', (req, res, next) => {
         })
         .catch((err) => {
           console.error(err);
-          res.status = 500
-          res.send('Send Mail caused Server Error. Please reach out to adrian@von-luck.de.')
+          res.status(500).send('Send Mail caused Server Error. Please reach out to adrian@von-luck.de.')
         })
     })
     .catch((err) => {
       console.log(err);
-      res.status = 400
-      res.send('Transporter Verification Error');
+      res.status(400).send('Transporter Verification Error');
     })
 
   })
   .catch((err) => {
     console.error(err)
-    res.status = 400
-    res.send('Bad Request');
+    res.status(400).send('Bad Request');
   })
 })
 
 app.get('*', function(req, res){
   const NotFound = Error("Sorry we couldn't find your route. Please reach out to adrian@von-luck.de.")
-  res.status = 404
-  res.send(NotFound);
+  res.status(404).send(NotFound);
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
