@@ -32,7 +32,6 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.get('/', (req, res) => res.send('Willkommen auf dem vonLuck Server'))
 
 app.get('/send-email', (req, res, next) => {
-  console.log(transporterConfiguration);
   const bodyStructure = [
     {
       key: 'from',
