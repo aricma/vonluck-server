@@ -30,7 +30,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 // CORS for von-luck.de
 app.all('/', function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "von-luck.de", "2003:dd:7f25:5200:e51e:f80c:19ef:22fd");
+  res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
   next();
  });
