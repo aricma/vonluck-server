@@ -30,8 +30,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 // CORS for von-luck.de
 app.all('/', function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
+  res.header("Access-Control-Allow-Origin", "*, http://localhost:3000");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
  });
 
@@ -50,7 +50,6 @@ app.use((req, res, next) => {
 })
 
 app.use('/send-email', (req, res, next) => {
-  console.log(req.body);
   const bodyStructure = [
     {
       key: 'from',
@@ -86,6 +85,7 @@ app.use('/send-email', (req, res, next) => {
 app.get('/', (req,res,next) => res.send('vonLuck server is ready'))
 
 app.post('/send-email', (req, res, next) => {
+  console.log(req.body);
   const {body: {from, to = 'info@von-luck.de', name, subject = 'No Subject', text = 'No Text'}} = req
   console.log('Server is ready to take our messages')
   const html = `
