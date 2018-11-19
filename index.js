@@ -82,7 +82,7 @@ app.use('/send-email', (req, res, next) => {
 
 
 // ROUTES
-app.get('/', (req, res, next) => transporterMiddleware(req, res, next))
+app.get('/', (req,res,next) => res.send('vonLuck server is ready'))
 
 app.post('/send-email', (req, res, next) => {
   const {body: {from, to = 'info@von-luck.de', name, subject = 'No Subject', text = 'No Text'}} = req
@@ -100,7 +100,7 @@ app.post('/send-email', (req, res, next) => {
     // text: 'Just some Feedback from the costumer',
     html,
   }
-  
+
   transporter.sendMail(message)
     .then(() => {
       const succsessMessage = 'email was send'
