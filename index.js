@@ -50,36 +50,36 @@ app.use((req, res, next) => {
   })
 })
 
-app.use('/send-email', (req, res, next) => {
-  const bodyStructure = [
-    {
-      key: 'from',
-      type: 'string',
-    },
-    {
-      key: 'to',
-      type: 'string',
-    },
-    {
-      key: 'subject',
-      type: 'string',
-    },
-    {
-      key: 'text',
-      type: 'string',
-    },
-  ]
-  checkObejctForStructure(req.body, bodyStructure)
-  .then(() => {
-    console.log('/send-email is ready')
-    res.status(200)
-    next()
-  })
-  .catch((err) => {
-    console.log(err)
-    res.status(400).send('Bad Request for req.body structure')
-  })
-})
+// app.use('/send-email', (req, res, next) => {
+  // const bodyStructure = [
+    // {
+      // key: 'from',
+      // type: 'string',
+    // },
+    // {
+      // key: 'to',
+      // type: 'string',
+    // },
+    // {
+      // key: 'subject',
+      // type: 'string',
+    // },
+    // {
+      // key: 'text',
+      // type: 'string',
+    // },
+  // ]
+  // checkObejctForStructure(req.body, bodyStructure)
+  // .then(() => {
+    // console.log('/send-email is ready')
+    // res.status(200)
+    // next()
+  // })
+  // .catch((err) => {
+    // console.log(err)
+    // res.status(400).send('Bad Request for req.body structure')
+  // })
+// })
 
 
 // ROUTES
