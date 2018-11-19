@@ -31,7 +31,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 // ROUTES
 app.get('/', (req, res) => res.send('Willkommen auf dem vonLuck Server'))
 
-app.get('/send-email', (req, res, next) => {
+app.post('/send-email', (req, res, next) => {
   const bodyStructure = [
     {
       key: 'from',
