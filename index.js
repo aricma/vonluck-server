@@ -37,6 +37,8 @@ app.use(function(req, res, next) {
 
 // MIDDLEWARE
 app.use((req, res, next) => {
+  console.log(req.headers)
+  console.log(req.body)
   transporter.verify()
   .then(() => {
     console.log('vonLuck Server is ready')
