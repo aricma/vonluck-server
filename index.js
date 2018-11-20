@@ -50,7 +50,7 @@ app.use((req, res, next) => {
 })
 
 app.use('/send-email', (req, res, next) => {
-  console.log(req.header.method);
+  console.log(req.header);
   const bodyStructure = [
     {
       key: 'from',
