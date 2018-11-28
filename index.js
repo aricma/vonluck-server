@@ -30,7 +30,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 // CORS
 app.use(function(req, res, next) {
-  const allowedOrigins = ['http://localhost:3000', 'https://von-luck.de', 'http://beta.von-luck.de'];
+  const allowedOrigins = ['http://localhost:3000', 'https://www.von-luck.de', 'http://beta.von-luck.de'];
   const origin = req.headers.origin
   if(allowedOrigins.indexOf(origin) > -1){
     res.setHeader('Access-Control-Allow-Origin', origin)
