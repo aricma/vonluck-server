@@ -90,7 +90,6 @@ app.use('/send-email', (req, res, next) => {
 app.get('/', (req,res,next) => res.send('vonLuck server is ready'))
 
 app.post('/send-email', (req, res, next) => {
-  console.log(req.body);
   const {body: {from, to = 'info@von-luck.de', name, subject = 'No Subject', text = 'No Text'}} = req
   console.log('Server is ready to take our messages')
   const html = `
