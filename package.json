@@ -1,19 +1,24 @@
 {
   "name": "vonluck-server",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "2.0.0",
+  "description": "The server for all vonluck webhooks and the future api",
+  "main": "src/index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "https://git.heroku.com/vonluck-server.git"
   },
-  "author": "aricma",
+  "author": {
+    "name": "aricma | Adrian Mindak",
+    "email": "adrian@aricma.com",
+    "url": "https://aricma.com"
+  },
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "dotenv": "^6.1.0",
     "express": "^4.16.4",
