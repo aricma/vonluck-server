@@ -1,18 +1,24 @@
+// express
 const express = require('express')
 const app = express()
-const bodyParser = require('body-parser')
-require('dotenv').config()
+
 // const {homepage} = require('./homepage/index.js')
 // const {api} = require('./api/index.js')
+
+// import routes
 const {webhookRouter} = require('./webhook/index.js')
 
+// port
+require('dotenv').config()
 const port = process.env.PORT
 
-// BODY PARSER
-app.use(bodyParser.json())
+// BODY PARSER set up
+const bodyParser = require('body-parser')
+app.use(bodyParser.json({type: ['application/json', 'application/javascript']}))
+app.use(bodyParser.text({type: ['text', 'text/csv']}))
 app.use(bodyParser.urlencoded({ extended: true }))
 
-// CORS
+// CORS to Allow sertain urls to send requests
 app.use(function(req, res, next) {
   const allowedOrigins = ['http://localhost:3000', 'https://www.von-luck.de', 'https://beta.von-luck.de'];
   const origin = req.headers.origin
@@ -24,8 +30,21 @@ app.use(function(req, res, next) {
   if (req.method === 'OPTIONS') { res.send(200) } else { next() }
 })
 
+// VIEW SETUP
+const reactViewEngine = require('express-react-views')
+app.set('views', __dirname + '/views');
+app.set('view engine', 'jsx');
+app.engine('jsx', reactViewEngine.createEngine({
+  beautify: true,
+  babel: {
+    presets: ['@babel/preset-react', [ '@babel/preset-env', {'targets': {'node': 'current'}}]],
+    plugins: ["babel-plugin-styled-components"]
+  }
+}));
+
 // ROUTES
-app.get('/', (req,res,next) => res.status(200).send('vonLuck server is online'))
+// const views = require('./routes')
+app.get('/', (req,res,next) => res.status(200).render('index', { name: 'John' }))
 
   // webhooks
   app.use('/webhook', webhookRouter)
