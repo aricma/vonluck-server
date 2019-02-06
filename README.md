@@ -25,6 +25,7 @@ To use this server you need to agree to the following rules:
 
 You can test with our good friend [Postman](https://www.getpostman.com/downloads/).
 If you don't know how to use Postman, go [here](https://learning.getpostman.com/).
+I am also working on a react based view engine for the server. This will give the oportunity for online dokumentation and webhook testing right in the browser :P.
 
 ## webhooks
 
@@ -58,6 +59,9 @@ Don't get confused. Still I don't know any better way to bring order and style i
     address: ${/*pick an address in or around berlin Germany*/},
   }
 ```
+
+### webhook/monkey-office
+// off limits - but comming soon
 
 ## Contact
 If you have any problems or questions?
