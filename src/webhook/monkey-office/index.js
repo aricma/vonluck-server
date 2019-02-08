@@ -62,7 +62,7 @@ function csvConverter (req, res, next) {
         if (umsatz7 === 0 && umsatz19 === 0) {
           return null
         } else {
-          const date = moment(line.filter(cell => cell[0] === 'DATUM')[0][1]).format('DD MM YYYY')
+          const date = moment(line.filter(cell => cell[0] === 'DATUM')[0][1]).format('DD. MM. YYYY')
 
           line = line.slice(1,-1).map(cell => {
             const vorlage = KontoVorlagen.filter(({ref}) => ref === cell[0])[0]
@@ -83,6 +83,7 @@ function csvConverter (req, res, next) {
         return line
       }).filter(line => line !== null)
       source = flatten(source)
+      source = source.filter(line => line["Betrag"] !== "0,00")
       source = [
         {
           "Firma_id": "Firma_id",
@@ -97,15 +98,16 @@ function csvConverter (req, res, next) {
         },
         ...source
       ]
+      res.json(source)
       // var csv = JSONToCSV(source, { fields })
       // fs.writeFileSync("uploads/data.csv", csv)
 
       // send the new file
-      res.setHeader('Content-Disposition', `attachment; filename="${originalname}"`);
-      res.csv(source)
+//      res.setHeader('Content-Disposition', `attachment; filename="${originalname}"`);
+//      res.csv(source)
 
       // delete the temp file in uploads
-      fs.unlinkSync(path)
+//      fs.unlinkSync(path)
     });
 }
 
