@@ -67,4 +67,4 @@ Don't get confused. Still I don't know any better way to bring order and style i
 
 ## Contact
 If you have any problems or questions?
-Write me an [email](mailto:adrian@aricma.com) to adrian@aricma.com.
+Write me an [email](mailto:adrian@von-luck.com) to adrian@von-luck.com.
