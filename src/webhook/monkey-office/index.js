@@ -36,7 +36,8 @@ function convertCurrencyValueFromNumbers(value = '') {
 */
 
 function csvConverter (req, res, next) {
-    const {file: {path, originalname}, body: {separator, lastRefrenceNumber, companyId}} = req
+  console.log('request came in');
+    const {file: {path, originalname}, body: {separator, refNumber: lastRefrenceNumber, companyId}} = req
     let refNumber = parseInt(lastRefrenceNumber)
     const cafe = firma.filter(({id}) => companyId === id)[0]
 

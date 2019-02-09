@@ -30,21 +30,14 @@ app.use(function(req, res, next) {
   if (req.method === 'OPTIONS') { res.send(200) } else { next() }
 })
 
-// VIEW SETUP
-const reactViewEngine = require('express-react-views')
-app.set('views', __dirname + '/views');
-app.set('view engine', 'jsx');
-app.engine('jsx', reactViewEngine.createEngine({
-  beautify: true,
-  babel: {
-    presets: ['@babel/preset-react', [ '@babel/preset-env', {'targets': {'node': 'current'}}]],
-    plugins: ["babel-plugin-styled-components"]
-  }
-}));
+// SET UP STATIC FILES
+const path = require('path')
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 // ROUTES
 // const views = require('./routes')
-app.get('/', (req,res,next) => res.status(200).render('index', { name: 'John' }))
+// app.get('/', (req,res,next) => res.status(200).render('index'))
+// app.get('/monkey-office', (req,res,next) => res.status(200).render('monkey-office'))
 
   // webhooks
   app.use('/webhook', webhookRouter)
@@ -54,7 +47,10 @@ app.get('/', (req,res,next) => res.status(200).render('index', { name: 'John' })
 
 
 //not found message
-app.get('*', (req, res) => res.status(404).send(Error("Sorry we couldn't find your route. Please reach out to adrian@von-luck.de.")))
+// app.get('*', (req, res) => res.status(404).send(Error("Sorry we couldn't find your route. Please reach out to adrian@von-luck.de.")))
+app.get('*', (req, res) => { // redirect to react app
+  res.sendFile(path.join(__dirname+'/client/build/index.html'));
+});
 
 // server is listening
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

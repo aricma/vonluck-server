@@ -4,7 +4,7 @@ The node server running on heroku.com to serve the von-luck.de domain and other 
 
 ## index
 - [intro](#intro)
-- [getting started](#getting\ started)
+- [getting started](#getting_started)
 - [contact](#contact)
 
 ## intro
