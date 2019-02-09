@@ -21,7 +21,22 @@ const Paragraph = styled.section`
     text-align: center;
   }
   > p {
+    line-height: 2;
     text-align: justify;
+
+    > a {
+      text-decoration: none;
+      color: black;
+      border-radius: 10px;
+      border: 1px solid black;
+      padding: 5px 10px;
+      box-sizing: border-box;
+
+      :hover {
+        color: white;
+        background: black;
+      }
+    }
   }
 `
 
@@ -44,8 +59,8 @@ const Home = class extends Component {
         {loading ? 'loading ...' : <Image link='https://res.cloudinary.com/aricma/image/upload/v1549747276/vonLuck/server.jpg' width={width} height='400'/>}
         <Paragraph>
           <h1>Welcome to the vonLuck server</h1>
-          <p>What you see is the client side of the vonLuck server. This webseite is still in progress but give me a change to tell you what we will be creating here.</p>
-          <p>We will make every Webhook, Webtask, Cronjob, and API Endpiont accsesable. Despite the elaborated documentation about the hole server and its potential.</p>
+          <p>What you see here is the client-side of the vonLuck server. This webpage is still in development but give me a change to tell you what we will be creating here.</p>
+          <p>We will make every Webhook, Webtask, Cronjob, and API Endpiont accessable. Despite the elaborated documentation about the hole server and its potential. Which hooks, tasks, jobs, and so on are we talking here? Take a look at the documentation at <a href='https://github.com/aricma/vonluck-server/' target='_blank' >Github</a> and checkout the index for a glimpse at the future.</p>
           <p>Best, Adrian | vonLuck</p>
         </Paragraph>
       </Layout>

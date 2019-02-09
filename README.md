@@ -1,10 +1,12 @@
-![vonLuck Wallpaper](./media/vonLuck.png)
+![vonLuck Wallpaper](./media/server.jpg)
 # vonLuck Server
 The node server running on heroku.com to serve the von-luck.de domain and other parts of the company.
 
 ## index
 - [intro](#intro)
 - [getting started](#getting_started)
+  - [webhooks]()
+  - [api]()
 - [contact](#contact)
 
 ## intro

@@ -117,7 +117,6 @@ const SignupSchema = Yup.object().shape({
 });
 
 export default class extends Component{
-  onSubmit () {console.log('submitting')}
   render () {
     return (
       <Layout>
@@ -132,9 +131,9 @@ export default class extends Component{
             }}
             validationSchema={SignupSchema}
             onSubmit={(values, { setSubmitting }) => {
-              const {companyId, refNumber, file } = values
+              const { companyId, refNumber, file } = values
               console.log('is this been called?');
-              setSubmitting(false)
+              console.log(values)
               // axios.post('/webhooks/monkey-office', {
               //   headers: {'Content-Type': 'multipart/form-data'},
               //   data: {
@@ -158,7 +157,7 @@ export default class extends Component{
               onSubmit,
               isSubmitting,
             }) => (
-              <form>
+              <Form>
                 {/* onSubmit={() => onSubmit()}> */}
                 <label className='company-Id'>
                   Laden ID
@@ -166,8 +165,9 @@ export default class extends Component{
                     id='companyId'
                     type="number"
                     name="companyId"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
+                    placeholder='type in the "firma_id" from monkey office'
+                    onChange={e => handleChange(e)}
+                    // onBlur={handleBlur}
                     value={values.companyId}
                   />
                   {errors.companyId && touched.companyId && <Error>{errors.companyId}</Error>}
@@ -178,6 +178,7 @@ export default class extends Component{
                     id='refNumber'
                     type="number"
                     name="refNumber"
+                    placeholder='type in the last "BelegNr" from monkey office'
                     onChange={handleChange}
                     // onBlur={handleBlur}
                     value={values.refNumber}
@@ -197,9 +198,9 @@ export default class extends Component{
                   />
                   {errors.password && touched.password && errors.password}
                 </label> */}
-                <button id='submit' onClick={() => this.onSubmit()}>convert</button>
+                <button id='submit'>convert</button>
                 {/* type="submit" disabled={isSubmitting} */}
-              </form>
+              </Form>
             )}
           </Formik>
         </Wrapper>
