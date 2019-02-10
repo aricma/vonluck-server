@@ -19,7 +19,7 @@ const Footer = styled.footer`
   > p {
     line-height: 2;
     text-align: center;
-    
+
     > a {
       text-decoration: none;
       color: black;
@@ -38,6 +38,6 @@ const Footer = styled.footer`
 
 export default props => (
   <Footer>
-    <p>If you having trobble and need support go check out the documentation on <a href='https://github.com/aricma/vonluck-server/' target='_blank' >Github</a> or contact me via <a href='mailto:adrian@von-luck.de'>email</a>.</p>
+    <p>If you having trobble and need support go check out the documentation on <a href='https://github.com/aricma/vonluck-server/' target='_blank' >Github</a><br /> or contact me via <a href='mailto:adrian@von-luck.de'>email</a>.</p>
   </Footer>
 )

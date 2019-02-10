@@ -36,6 +36,8 @@ const Nav = styled.nav`
       box-sizing: border-box;
       margin: 0 5px;
 
+      font-size: 12px;
+      font-weight: 600;
       text-decoration: none;
       text-align: center;
       color: black;
