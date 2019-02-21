@@ -8,7 +8,7 @@ import { CloudinaryContext } from 'cloudinary-react'
 // import * as serviceWorker from './serviceWorker';
 
 render(
-  <CloudinaryContext cloudName={process.env.CLOUDINARY_NAME}>
+  <CloudinaryContext cloudName={process.env.CLOUDINARY_NAME || 'aricma'}>
     <HashRouter>
       <ScrollToTop>
         <App />
