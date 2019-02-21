@@ -1,15 +1,18 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import {render} from 'react-dom';
 import { HashRouter } from 'react-router-dom'
+import ScrollToTop from './components/scroll-to-top.js'
 import './index.css'
 import App from './views/index.js';
 import { CloudinaryContext } from 'cloudinary-react'
 // import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(
+render(
   <CloudinaryContext cloudName={process.env.CLOUDINARY_NAME || 'aricma'}>
     <HashRouter>
-      <App />
+      <ScrollToTop>
+        <App />
+      </ScrollToTop>
     </HashRouter>
   </CloudinaryContext>
   , document.getElementById('root'));

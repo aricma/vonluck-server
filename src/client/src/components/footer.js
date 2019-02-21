@@ -38,6 +38,6 @@ const Footer = styled.footer`
 
 export default props => (
   <Footer>
-    <p>If you having trobble and need support go check out the documentation on <a href='https://github.com/aricma/vonluck-server/' target='_blank' >Github</a><br /> or contact me via <a href='mailto:adrian@von-luck.de'>email</a>.</p>
+    <p>If you are having troubble and need support go check out the documentation on <a href='https://github.com/aricma/vonluck-server/' target='_blank' >Github</a><br /> or contact me via <a href='mailto:adrian@von-luck.de'>email</a>.</p>
   </Footer>
 )

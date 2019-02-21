@@ -14,9 +14,15 @@ const port = process.env.PORT
 
 // BODY PARSER set up
 const bodyParser = require('body-parser')
-app.use(bodyParser.json({type: ['application/json', 'application/javascript']}))
+// app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json()) // {type: ['application/json', 'application/javascript', 'application/x-www-form-urlencoded']}))
 app.use(bodyParser.text({type: ['text', 'text/csv']}))
-app.use(bodyParser.urlencoded({ extended: true }))
+
+// FILE UPLOAD
+const multer  = require('multer')
+const upload = multer({ dest: 'uploads/' }).single('file')
+app.use(upload)
+
 
 // CORS to Allow sertain urls to send requests
 app.use(function(req, res, next) {
@@ -27,7 +33,7 @@ app.use(function(req, res, next) {
   }
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   //intercepts OPTIONS method
-  if (req.method === 'OPTIONS') { res.send(200) } else { next() }
+  if (req.method === 'OPTIONS') { res.sendStatus(200) } else { next() }
 })
 
 // SET UP STATIC FILES

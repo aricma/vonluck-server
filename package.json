@@ -7,7 +7,8 @@
   "scripts": {
     "start": "PORT=5000 nodemon src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild": "cd client && yarn && yarn run build"
+    "heroku-postbuild": "cd client && yarn && yarn run build",
+    "deploy": "git push heroku master"
   },
   "repository": {
     "type": "git",
