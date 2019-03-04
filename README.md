@@ -71,8 +71,8 @@ This is a csv converter for the vonLuck cash-reports to monkey office import str
 
 MonkeyOffice is a software for accountants to write tax reports as well as cash reports and export them as DATEV(encrypted data format). DATEV is the software in germany to do tax reports. It is the only one government approved/legal. At least as far as I know. If you want to know more about DATEV, then be my guest and get the hell out of here. That shit is extremly boring!
 
-break a leg: [DATEV](https://www.datev.de/web/de/startseite/startseite-n/)
-good luck: [Monkey Office](https://www.monkey-office.de/) [Monkey Office Documentation](https://www.monkey-office.de/doc/Start.html)
+break a leg: [DATEV](https://www.datev.de/web/de/startseite/startseite-n/),
+good luck: [Monkey Office](https://www.monkey-office.de/), [Monkey Office Documentation](https://www.monkey-office.de/doc/Start.html)
 
 To make the reports easy to maintiain for us we use an excel sheet with the following structure to write our daily cash reports.
 

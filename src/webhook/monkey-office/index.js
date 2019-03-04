@@ -19,10 +19,13 @@ function convertCurrencyValueFromNumbers(value = '') {
   let isNegative = false
   if (value.includes('(') && value.includes(')')) {
     isNegative = true
+    value = value.replace('(', '')
+    value = value.replace(')', '')
   }
+  value = value.replace('.', '')
   value = /[0-9]+,?[0-9]*/g.exec(value)
-  value = value === null ? '0.00' : value[0]
-  value = `${isNegative ? '-' : ''}${value}`.replace('.',',')
+  value = value === null ? '0,00' : value[0]
+  value = `${isNegative ? '-' : ''}${value}`.trim() // .replace('.',',')
   return value
 }
 
@@ -56,6 +59,7 @@ function csvConverter (req, res, next) {
             'MASTER': convertCurrencyValueFromNumbers(line['MASTER']),
             'VISA': convertCurrencyValueFromNumbers(line['VISA']),
             'VISA ELECTRON': convertCurrencyValueFromNumbers(line['VISA ELECTRON']),
+            'UNION PAY': convertCurrencyValueFromNumbers(line['UNION PAY']),
             'AUSZAHLUNGEN': convertCurrencyValueFromNumbers(line['AUSZAHLUNGEN']),
             'PRIVATENTNAHME': convertCurrencyValueFromNumbers(line['PRIVATENTNAHME']),
             'ABSCHÖPFUNGEN': convertCurrencyValueFromNumbers(line['ABSCHÖPFUNGEN']),

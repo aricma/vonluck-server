@@ -110,7 +110,16 @@ const KontoVorlagen = [
   {
     id: 7,
     negative: false,
-    text: '8.Auszahlungen für Kosten',
+    text: '8.Union Pay',
+    soll: 'Karte',
+    haben: 'Kasse',
+    steuer: '',
+    ref: 'UNION PAY'
+  },
+  {
+    id: 8,
+    negative: false,
+    text: '9.Auszahlungen für Kosten',
     soll: 'Durchlaufende Posten',
     haben: 'Kasse',
     steuer: '',
@@ -119,7 +128,7 @@ const KontoVorlagen = [
   {
     id: 9,
     negative: false,
-    text: '9.Lohn Auszahlungen',
+    text: '10.Lohn Auszahlungen',
     soll: 'Kasse',
     haben: 'Lohnauszahlungen',
     steuer: '',
@@ -128,7 +137,7 @@ const KontoVorlagen = [
   {
     id: 10,
     negative: false,
-    text: '10.Privat Entnahme',
+    text: '11.Privat Entnahme',
     soll: 'Entnahme',
     haben: 'Kasse',
     steuer: '',
@@ -137,7 +146,7 @@ const KontoVorlagen = [
   {
     id: 11,
     negative: false,
-    text: '11.Entnahme Abschöpfung',
+    text: '12.Entnahme Abschöpfung',
     soll: 'Entnahme',
     haben: 'Kasse',
     steuer: '',
@@ -146,7 +155,7 @@ const KontoVorlagen = [
   {
     id: 12,
     negative: false,
-    text: '12.Entnahme Tagesabrechnung',
+    text: '13.Entnahme Tagesabrechnung',
     soll: 'Entnahme',
     haben: 'Kasse',
     steuer: '',
