@@ -90,7 +90,7 @@ function csvConverter (req, res, next) {
               "Text": vorlage.text,
               "KontoSoll": cafe.accounts.filter(({account, value}) => account === vorlage.soll)[0].value,
               "KontoHaben": cafe.accounts.filter(({account, value}) => account === vorlage.haben)[0].value,
-              "Betrag": cell[1],
+              "Betrag": cell[1].replace('-', '').trim(),
               "Steuersatz": vorlage.steuer
             }
           })
